@@ -9,6 +9,10 @@ You should receive the following response:
 
 include::{snippets}/index/http-response.adoc[]
 
+The structure of the response is:
+
+include::{snippets}/index/response-fields.adoc[]
+
 The links in the response are:
 
 include::{snippets}/index/links.adoc[]

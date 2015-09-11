@@ -5,6 +5,8 @@ import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.li
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -45,10 +47,12 @@ public class DemoApplicationTests {
 	public void index() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk())
 				.andDo(document("index",
+						responseFields(fieldWithPath("_links").description(
+								"Hypermedia links to other resources")),
 						links(linkWithRel("notes")
 								.description("Notes resource"),
-						linkWithRel("profile")
-								.description("ALPS profile resource"))));
+								linkWithRel("profile").description(
+										"ALPS profile resource"))));
 	}
 
 }
