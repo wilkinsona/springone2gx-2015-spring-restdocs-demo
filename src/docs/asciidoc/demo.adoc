@@ -3,3 +3,7 @@
 You can access the index of service by performing a `GET` request on `/`:
 
 include::{snippets}/index/curl-request.adoc[]
+
+You should receive the following response:
+
+include::{snippets}/index/http-response.adoc[]
