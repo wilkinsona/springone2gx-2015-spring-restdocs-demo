@@ -1,5 +1,7 @@
 package demo;
 
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
@@ -42,7 +44,11 @@ public class DemoApplicationTests {
 	@Test
 	public void index() throws Exception {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk())
-				.andDo(document("index"));
+				.andDo(document("index",
+						links(linkWithRel("notes")
+								.description("Notes resource"),
+						linkWithRel("profile")
+								.description("ALPS profile resource"))));
 	}
 
 }
