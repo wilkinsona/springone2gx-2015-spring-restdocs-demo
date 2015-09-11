@@ -54,3 +54,17 @@ eclipse {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+	outputs.dir snippetsDir
+}
+
+asciidoctor {
+    attributes 'snippets': snippetsDir
+    inputs.dir snippetsDir
+    dependsOn test
+}
