@@ -1,4 +1,5 @@
 = Spring REST Docs demo – SpringOne2GX 2015
+:source-highlighter: highlightjs
 
 You can access the index of service by performing a `GET` request on `/`:
 
